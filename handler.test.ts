@@ -16,7 +16,7 @@ it('testing',  async() =>{
         },
    })
 
-   const res = await createVehicle(event)
+   const res =  await createVehicle(event)
 
    console.log(res)
 
