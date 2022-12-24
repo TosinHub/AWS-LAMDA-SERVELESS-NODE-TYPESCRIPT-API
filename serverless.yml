@@ -43,7 +43,7 @@ functions:
           path: /vehicle/{id}
           method: put
   deleteVehicle:
-    handler: src/handlers.updateVehicle
+    handler: src/handlers.deleteVehicle
     events:
       - httpApi:
           path: /vehicle/{id}

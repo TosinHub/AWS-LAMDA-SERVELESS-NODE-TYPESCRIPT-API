@@ -14,7 +14,6 @@ To run this code , you must have serverless installed globally on your machine
 
 ```
  $ npm install -g serverless
-
 ```
 You must must have an AWS IAM account to configure serverless
  ```
@@ -28,20 +27,17 @@ After a successful configuration with your IAM AWS details, cd into the file fol
  $ serverless deploy
 
 ```
-
+The output of the deployment will show all the Lambda functions and the API endpoints
 
 ## API ENDPOINTS
 
 The serverless API has been deployed and the following are the endpoints
 
+- POST /vehicle - creates new vehicle (all inputs are validated)
+- GET /vehicle/{id} - gets a vehicle by ID
+- PUT /vehicle/{id} - updates a vehicle by ID
+- DELETE /vehicle/{id} - deletes a vehicle by ID
+- GET /products - gets a list of vehicles
 
-
-or:
-
-```
-yarn install
-```
-
-## Licence
-
-MIT.
+## API DOCUMENTATION
+Here is the link to the API documentation on Postman

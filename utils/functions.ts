@@ -3,6 +3,7 @@ import AWS from "aws-sdk";
 import * as yup from 'yup'
 
 
+//Handles validation for vehicle inputs
 export const schema = yup.object().shape({
     Make: yup.string().required(),
     Model: yup.string().required(),
@@ -29,7 +30,9 @@ export const handleError = (e: unknown) =>{
         return {
           statusCode: 400,
           headers,
-          body: JSON.stringify({error : `Invalid request body format : ${e.message}`})
+          body: JSON.stringify({
+            errors : e.errors
+          })
         }
         
       }
