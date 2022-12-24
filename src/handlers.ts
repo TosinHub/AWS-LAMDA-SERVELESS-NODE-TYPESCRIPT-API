@@ -6,26 +6,34 @@ import * as Utils from '../utils/functions'
 const headers = Utils.headers
 
 export const createVehicle = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  const reqBody = JSON.parse(event.body as string);
+  
+  try {
 
-  await Utils.schema.validate(reqBody, {abortEarly : false})
+    const req = JSON.parse(event.body as string);
 
-  const vehicle = {
-    ...reqBody,
-    vehicleID: v4(),
-  };
-  await Utils.docClient
-    .put({
-      TableName: Utils.tableName,
-      Item: vehicle,
-    })
-    .promise();
-
-  return {
-    statusCode: 201,
-    headers,
-    body: JSON.stringify(vehicle),
-  };
+    await Utils.schema.validate(req, {abortEarly : false})
+  
+    const vehicle = {
+      ...req,
+      vehicleID: v4(),
+    };
+    await Utils.docClient
+      .put({
+        TableName: Utils.tableName,
+        Item: vehicle,
+      })
+      .promise();
+  
+    return {
+      statusCode: 201,
+      headers,
+      body: JSON.stringify(vehicle),
+    };
+    
+  } catch (error) {
+    return Utils.handleError(error)
+  }
+ 
 };
 
 export const getVehicle = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
