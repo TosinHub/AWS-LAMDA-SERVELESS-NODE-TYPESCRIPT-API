@@ -89,7 +89,7 @@ export const deleteVehicle = async (event: APIGatewayProxyEvent): Promise<APIGat
       await Utils.docClient.delete({
         TableName : Utils.tableName,
         Key: {
-          productID: id
+          vehicleID: id
         }
       }).promise()
 
