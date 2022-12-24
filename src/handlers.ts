@@ -101,10 +101,16 @@ export const deleteVehicle = async (event: APIGatewayProxyEvent): Promise<APIGat
         }
       }).promise()
 
+      
+      const deleteMsg = {
+    
+        message: "Vehicle deleted"
+    };
+
       return {
         statusCode : 204,
         headers,
-        body:JSON.stringify({ Message: "Vehicle deleted" })
+        body: JSON.stringify(deleteMsg)
       }
     } catch (error) {
       
@@ -116,14 +122,14 @@ export const deleteVehicle = async (event: APIGatewayProxyEvent): Promise<APIGat
 
 export const listVehicles = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
 
-    const response = await Utils.docClient.scan({
+    const res = await Utils.docClient.scan({
       TableName: Utils.tableName
     }).promise()
 
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify(response.Items)
+      body: JSON.stringify(res.Items)
     }
 }
 
