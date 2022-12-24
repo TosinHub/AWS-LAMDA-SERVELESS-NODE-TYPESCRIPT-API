@@ -1,0 +1,89 @@
+
+
+service: vehicles-api
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  region: eu-west-1
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+          - "dynamodb:PutItem"
+          - "dynamodb:GetItem"
+          - "dynamodb:DeleteItem"
+          - "dynamodb:Scan"
+          Resource:
+          - {"Fn::GetAtt": ["VehiclesTable", "Arn"]}
+         
+
+
+functions:
+  createVehicle:
+    handler: src/handlers.createVehicle
+    events:
+      - httpApi:
+          path: /vehicle
+          method: post
+  getVehicle:
+    handler: src/handlers.getVehicle
+    events:
+      - httpApi:
+          path: /vehicle/{id}
+          method: get
+  updateVehicle:
+    handler: src/handlers.updateVehicle
+    events:
+      - httpApi:
+          path: /vehicle/{id}
+          method: put
+  deleteVehicle:
+    handler: src/handlers.updateVehicle
+    events:
+      - httpApi:
+          path: /vehicle/{id}
+          method: delete
+  listVehicle:
+    handler: src/handlers.listVehicles
+    events:
+      - httpApi:
+          path: /vehicles
+          method: get
+
+
+
+
+
+
+
+
+plugins:
+  - serverless-plugin-typescript
+
+
+resources:
+  Resources:
+    VehiclesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: VehiclesTable
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        AttributeDefinitions:
+          - AttributeName: vehicleID
+            AttributeType: S
+
+        KeySchema:
+          - AttributeName: vehicleID
+            KeyType: HASH
