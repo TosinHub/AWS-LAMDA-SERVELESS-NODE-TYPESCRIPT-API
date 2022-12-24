@@ -40,4 +40,4 @@ The serverless API has been deployed and the following are the endpoints
 - GET /products - gets a list of vehicles
 
 ## API DOCUMENTATION
-Here is the link to the API documentation on Postman
+Here is the link to the API documentation on Postman (https://documenter.getpostman.com/view/24428686/2s8Z6vYuAQ)
