@@ -1,6 +1,4 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-import AWS from "aws-sdk";
-import { doc } from "prettier";
 import { v4 } from "uuid";
 import * as Utils from '../utils/functions'
 
