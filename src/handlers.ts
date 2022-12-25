@@ -75,6 +75,7 @@ export const updateVehicle = async (event: APIGatewayProxyEvent): Promise<APIGat
 
   return {
     statusCode: 201,
+    headers,
     body: JSON.stringify(vehicle),
   };
 
