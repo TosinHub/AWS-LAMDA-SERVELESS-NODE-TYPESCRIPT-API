@@ -29,6 +29,15 @@ After a successful configuration with your IAM AWS details, cd into the file fol
 ```
 The output of the deployment will show all the Lambda functions and the API endpoints
 
+## API ENDPOINT TESTING WITH JEST FRAMEWORK
+
+To test the API endpoints using the JEST framework, run the following command via the terminal
+
+ ```
+ $ npm run test
+
+```
+
 ## API ENDPOINTS
 
 The serverless API has been deployed and the following are the endpoints
@@ -48,3 +57,10 @@ The serverless API has been deployed and the following are the endpoints
 
 ## API DOCUMENTATION
 Here is the link to the API documentation on Postman (https://documenter.getpostman.com/view/24428686/2s8Z6vYuAQ)
+
+
+
+
+
+
+
