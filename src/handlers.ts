@@ -1,9 +1,12 @@
+//This file contains Lambda functions that handles all request to the API
+
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { v4 } from "uuid";
 import * as Utils from '../utils/functions'
 
 
 const headers = Utils.headers
+
 
 export const createVehicle = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   

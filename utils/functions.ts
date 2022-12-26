@@ -3,7 +3,7 @@ import AWS from "aws-sdk";
 import * as yup from 'yup'
 
 
-//Handles validation for vehicle inputs
+//Handles validation error for vehicle inputs
 export const schema = yup.object().shape({
     Make: yup.string().required(),
     Model: yup.string().required(),
