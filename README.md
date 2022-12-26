@@ -46,7 +46,7 @@ The serverless API has been deployed and the following are the endpoints
 - GET /vehicle/{id} - gets a vehicle by ID
 - PUT /vehicle/{id} - updates a vehicle by ID
 - DELETE /vehicle/{id} - deletes a vehicle by ID
-- GET /products - gets a list of vehicles
+- GET /vehicles - gets a list of vehicles
 
 ## AWS SERVERLESS API ENDPOINT  : (https://7a974vj7d1.execute-api.eu-west-1.amazonaws.com/)
 - POST (https://7a974vj7d1.execute-api.eu-west-1.amazonaws.com/vehicle 
